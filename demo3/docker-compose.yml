@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  demo:
+    build: ./
+    hostname: demo
+    container_name: demo
+    ports:
+      - "8080:8080"
+    environment:
+      - JAVA_OPTS=-Dcsp.sentinel.log.dir=/opt/logs -Dserver.port=8080 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard  -Djava.security.egd=file:/dev/./urandom
+    volumes:
+      - ./:/opt/logs
+      - ./logs:/opt/logs

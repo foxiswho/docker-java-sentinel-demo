@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  demo:
+    build: ./
+    hostname: demo
+    container_name: demo
+    ports:
+      - "8080:8080"
+    environment:
+      - JAVA_OPTS=-Dcsp.sentinel.log.dir=/opt/logs
+    volumes:
+      - ./:/opt/logs
+      - ./logs:/opt/logs
